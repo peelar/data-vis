@@ -1,4 +1,6 @@
-[
+import { Movie } from "../../types";
+
+export const movies: Movie[] = [
   {
     "title": "The Legend of Tarzan",
     "released": "2016-06-30T22:00:00.000Z",
