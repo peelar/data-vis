@@ -1,3 +1,6 @@
+import { useEffect, useRef } from 'react';
+import * as d3 from 'd3';
+
 export const meta = {
   title: 'Lesson 001',
   author: 'Adrian Pilarczyk',
@@ -52,3 +55,43 @@ That's better:
     />
   </svg>
 </div>
+
+---
+
+A circle drawn with D3:
+
+export const Circle = () => {
+  const ref = useRef();
+  useEffect(() => {
+    const svgElement = d3.select(ref.current);
+    svgElement.append('circle').attr('cx', 150).attr('cy', 70).attr('r', 50);
+  }, []);
+  return <svg ref={ref}></svg>;
+};
+
+<Circle />
+
+---
+
+export const Container = () => {
+  const ref = useRef();
+  useEffect(() => {
+    const svg = d3.select(ref.current);
+    // select the first path in the svg selection
+    // (note: selections can be chained)
+    const select = svg.select('rect');
+    // select all the paths in the svg selection
+    const selectAll = svg.selectAll('rect');
+  }, []);
+  return (
+    <svg ref={ref}>
+      <rect />
+      <rect />
+      <rect />
+      <rect />
+      <rect />
+    </svg>
+  );
+};
+
+<Container />
